@@ -4,9 +4,107 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pragna Patel's Tutorial — Login Links (Index)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0b1020;--text:#e6ecff;--muted:#91a1c9}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;background:radial-gradient(1200px 800px at 10% -10%, #18224a 0%, #0b1020 55%), var(--bg);color:var(--text)}
+    .container{max-width:1000px;margin:40px auto;padding:0 16px}
+    header{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+    .logo{height:58px;width:auto;object-fit:contain;border-radius:8px;background:#ffffff10;padding:6px}
+    @media (max-width:520px){.logo{height:46px}}
+    .title{font-weight:800;letter-spacing:.2px;font-size:clamp(22px,3.2vw,34px)}
+    .address{margin:4px 0 24px 0;font-size:13px;line-height:1.4;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+    .tab{display:block;position:relative;padding:18px 16px;border-radius:16px;color:#fff;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.28);transition:transform .12s ease, box-shadow .12s ease, color .12s ease}
+    .tab:hover{transform:translateY(-2px);box-shadow:0 16px 28px rgba(0,0,0,.34)}
+    .tab:hover .name{color:#ffffcc;}
+    .tab .name{font-weight:700;line-height:1.2;transition:color .12s ease}
+    .tab .hint{opacity:.9;font-size:12px;margin-top:6px}
+    .row{display:flex;align-items:center;gap:10px}
+    .favicon{width:18px;height:18px;border-radius:4px;flex:0 0 auto;background:#0002}
+    .g1{background:linear-gradient(135deg,#2bb0b6,#4fc3cf)}
+    .g2{background:linear-gradient(135deg,#ff9068,#fd746c)}
+    .g3{background:linear-gradient(135deg,#00b09b,#96c93d)}
+    .g4{background:linear-gradient(135deg,#2a5298,#1e3c72)}
+    .g5{background:linear-gradient(135deg,#f7971e,#ffd200)}
+    .g6{background:linear-gradient(135deg,#8e2de2,#4a00e0)}
+    .g7{background:linear-gradient(135deg,#ff512f,#dd2476)}
+    .g8{background:linear-gradient(135deg,#11998e,#38ef7d)}
+  </style>
 </head>
 <body>
-  <h1>Pragna Patel's Tutorial</h1>
-  <p>Your site is live! Upload the real index.html content here.</p>
+  <div class="container">
+    <header>
+      <img class="logo" src="Pragna-Logo.jpg" alt="Pragna Patel's Tutorial Logo" onerror="this.style.display='none'">
+      <div class="title">Pragna Patel's Tutorial</div>
+    </header>
+    <div class="address">
+      Bhagirathi Bhuvan 1st Floor, Thakur Complex, Asha Nagar Road, Kandivali East, Mumbai - 400101 &nbsp; | &nbsp; Ph: +91-8850267569 &nbsp; | &nbsp;
+      <a href="mailto:contact@pragnatutorials.com" style="color:#b9d3ff;text-decoration:none">contact@pragnatutorials.com</a>
+    </div>
+    <div class="grid" id="grid"></div>
+    <noscript>
+      <p style="margin-top:12px;color:#ffb3b3">JavaScript is disabled. Enable it to see the login tabs.</p>
+    </noscript>
+  </div>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const LINKS = [
+        { name: '📧 Tutorial Business Email', url: 'https://tinyurl.com/pragnaLogin', color:'g4' },
+        { name: '📨 Gmail', url: 'https://mail.google.com', color:'g6' },
+        { name: '🌐 Website', url: 'https://pragnatutorials.com', color:'g1' },
+        { name: '💬 WhatsApp', url: '', color:'g8', whatsapp:true },
+        { name: '🛠️ Admin (Software & App)', url: 'https://pragnatutorials.app/admin/admin/dashboard', color:'g8' },
+        { name: '👨‍👩‍👧‍👦 Students / Parents', url: 'https://pragnatutorials.app/site/userlogin', color:'g7' },
+        { name: '🧾 Ask Software Support', url: 'https://support.qdocs.net/user/ticket', hint: 'Support expires Feb 2026', color:'g5' },
+        { name: '📚 Software Help Articles', url: 'https://smart-school.in/articles', color:'g3' },
+        { name: '✉️ MSG91', url: 'https://control.msg91.com/app/m/l/sms/templates', color:'g2' },
+        { name: '💳 Razorpay', url: 'https://razorpay.com/', color:'g1' },
+        { name: '📈 smartping', url: 'https://smartping.live/entity/signup/Indian', color:'g6' },
+        { name: '📘 Facebook', url: 'https://www.facebook.com/PragnaPatelsTutorial', color:'g2' },
+        { name: '📸 Instagram', url: 'https://www.instagram.com/pragna_patels_tutorial/', color:'g7' },
+        { name: '💼 LinkedIn', url: 'https://www.linkedin.com/company/pragnapatelstutorials/?viewAsMember=true', color:'g4' },
+        { name: '🐦 Twitter', url: 'https://x.com/PragnaTutorials', color:'g5' },
+        { name: '📍 Branch Location', url: 'https://maps.app.goo.gl/gxmFKUtDoVVkxhgh8?g_st=ipc', color:'g3' },
+        { name: '🛒 Olx (Placeholder)', url: '#', color:'g1', hint:'Coming soon' },
+        { name: '📞 Justdial (Placeholder)', url: '#', color:'g2', hint:'Coming soon' },
+        { name: '⚡ Quickr (Placeholder)', url: '#', color:'g3', hint:'Coming soon' },
+        { name: '📑 Sulekha (Placeholder)', url: '#', color:'g4', hint:'Coming soon' },
+        { name: '❓ Askme (Placeholder)', url: '#', color:'g5', hint:'Coming soon' }
+      ];
+      function faviconUrl(u){
+        try { const host = new URL(u).hostname; return `https://www.google.com/s2/favicons?sz=64&domain=${host}`; }
+        catch { return '' }
+      }
+      function isMobile(){
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Windows Phone|Mobi/i.test(navigator.userAgent);
+      }
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+      LINKS.forEach((e,i)=>{
+        const a = document.createElement('a');
+        a.className = `tab ${e.color || `g${(i%8)+1}`}`;
+        let href = e.url;
+        if (e.whatsapp) {
+          const encodedMsg = 'Hi%20Pragna%20Patel%27s%20Tutorials!%20I%20want%20to%20enquire%20about%20ICSE%2FCBSE%20classes.';
+          href = isMobile() ? `https://wa.me/918850267569?text=${encodedMsg}` : `https://web.whatsapp.com/send?phone=918850267569&text=${encodedMsg}`;
+        }
+        a.href = href;
+        a.target = href==="#" ? '' : '_blank';
+        a.rel = 'noopener';
+        a.innerHTML = `
+          <div class="row">
+            <img class="favicon" src="${faviconUrl(href)}" alt="">
+            <div class="name">${e.name}</div>
+          </div>
+          ${e.hint?`<div class="hint">${e.hint}</div>`:''}
+        `;
+        grid.appendChild(a);
+      });
+    });
+  </script>
 </body>
 </html>
